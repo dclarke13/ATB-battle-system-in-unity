@@ -1618,6 +1618,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battlestate: 0
+  TurnList: []
+  PlayerCharacters: []
+  EnemyCharacters: []
 --- !u!4 &737222527
 Transform:
   m_ObjectHideFlags: 0
@@ -1774,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-    enemyName: ' '
+    enemyName: Enemy1
     enemyType: 0
     droprate: 0
     baseHP: 20
@@ -2838,7 +2841,12 @@ Prefab:
     - target: {fileID: 224186250702772334, guid: 057940d24614ca04a94b227322e2cca7,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -2.0424957
+      value: -2.0424805
+      objectReference: {fileID: 0}
+    - target: {fileID: 224833914414468666, guid: 057940d24614ca04a94b227322e2cca7,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.50002384
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057940d24614ca04a94b227322e2cca7, type: 2}
@@ -3540,7 +3548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
-    enemyName: ' '
+    enemyName: Enemy2
     enemyType: 0
     droprate: 0
     baseHP: 0

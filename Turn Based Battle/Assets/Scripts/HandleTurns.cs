@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class HandleTurns
 {
 
@@ -9,7 +10,7 @@ public class HandleTurns
     public string attacker;
     //gameobject of attacker
     public GameObject attackerGO;
-    //gmaeobject of target
+    //gameobject of target
     public GameObject attackTarget;
 
     //which attack is performed

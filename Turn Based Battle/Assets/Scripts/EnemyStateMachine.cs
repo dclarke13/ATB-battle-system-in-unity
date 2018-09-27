@@ -6,13 +6,13 @@ public class EnemyStateMachine : MonoBehaviour
 {
 
     public BaseEnemy enemy;
+    private BattleStateMachine bsm;
 
     public enum TurnState
     {
         PROCESSING,
-        ADDTOLIST,
+        CHOOSEACTION,
         WAITING,
-        SELECTING,
         ACTION,
         DEAD
     }
@@ -21,13 +21,16 @@ public class EnemyStateMachine : MonoBehaviour
     //for progress bar
     private float curCooldown = 0.0f;
     private float maxCooldown = 5.0f;
+    //
+    private Vector3 startPosition;
 
     // Use this for initialization
     void Start()
     {
 
         currentState = TurnState.PROCESSING;
-
+        bsm = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -41,15 +44,12 @@ public class EnemyStateMachine : MonoBehaviour
                 updateProgressBar();
                 break;
 
-            case (TurnState.ADDTOLIST):
-
+            case (TurnState.CHOOSEACTION):
+                chooseAction();
+                currentState = TurnState.WAITING;
                 break;
 
             case (TurnState.WAITING):
-
-                break;
-
-            case (TurnState.SELECTING):
 
                 break;
 
@@ -75,8 +75,18 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (curCooldown >= maxCooldown)
         {
-            currentState = TurnState.ADDTOLIST;
+            currentState = TurnState.CHOOSEACTION;
         }
+    }
+
+    void chooseAction()
+    {
+
+        HandleTurns thisAttack = new HandleTurns();
+        thisAttack.attacker = enemy.enemyName;
+        thisAttack.attackerGO = this.gameObject;
+        thisAttack.attackTarget = bsm.PlayerCharacters[Random.Range(0, bsm.PlayerCharacters.Count)];
+        bsm.CollectActions(thisAttack);
     }
 
 }

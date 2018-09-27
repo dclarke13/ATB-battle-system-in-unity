@@ -12,11 +12,21 @@ public class BattleStateMachine : MonoBehaviour {
     }
 
     public PerformAction battlestate;
+    //list of turn order
+    public List<HandleTurns> TurnList = new List<HandleTurns>();
+    // list of player characters
+    public List<GameObject> PlayerCharacters = new List<GameObject>();
+    //list of enemies
+    public List<GameObject> EnemyCharacters = new List<GameObject>();
 
 	// Use this for initialization
 	void Start ()
     {
         battlestate = PerformAction.WAIT;
+        //add players to list at start of battle
+        PlayerCharacters.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+       //add enemies to list at start of battle
+        EnemyCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
 	}
 	
 	// Update is called once per frame
@@ -39,5 +49,12 @@ public class BattleStateMachine : MonoBehaviour {
         }
 
 	}
+
+    public void CollectActions(HandleTurns turns)
+    {
+
+        TurnList.Add(turns);
+
+    }
 
 }

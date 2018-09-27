@@ -36,11 +36,28 @@ public class BattleStateMachine : MonoBehaviour {
         switch(battlestate)
         {
             case (PerformAction.WAIT):
-
+                if(TurnList.Count>0)
+                {
+                    battlestate = PerformAction.TAKEACTION;
+                }
                 break;
 
             case (PerformAction.TAKEACTION):
+                GameObject performer = GameObject.Find(TurnList[0].attacker);
+                //handles enemies
+                if (TurnList[0].type =="Enemy")
+                {
+                    EnemyStateMachine ESM = performer.GetComponent<EnemyStateMachine>();
+                    ESM.targetPlayer = TurnList[0].attackTarget;
+                    ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+                }
+                //handles heroes
+                if (TurnList[0].type == "Enemy")
+                {
 
+                }
+
+                battlestate = PerformAction.PERFORMACTION;
                 break;
 
             case (PerformAction.PERFORMACTION):

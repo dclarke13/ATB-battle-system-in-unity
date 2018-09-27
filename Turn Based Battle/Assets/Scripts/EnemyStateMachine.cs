@@ -21,9 +21,13 @@ public class EnemyStateMachine : MonoBehaviour
     //for progress bar
     private float curCooldown = 0.0f;
     private float maxCooldown = 5.0f;
-    //
+    // start position for animations
     private Vector3 startPosition;
-
+    //actiontimer setup
+    private bool actionStarted = false;
+    //GO for target used for animation
+    public GameObject targetPlayer;
+    private float animSpeed = 5f;
     // Use this for initialization
     void Start()
     {
@@ -50,11 +54,11 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case (TurnState.WAITING):
-
+                
                 break;
 
             case (TurnState.ACTION):
-
+                StartCoroutine(actionTimer());
                 break;
 
             case (TurnState.DEAD):
@@ -84,9 +88,57 @@ public class EnemyStateMachine : MonoBehaviour
 
         HandleTurns thisAttack = new HandleTurns();
         thisAttack.attacker = enemy.enemyName;
+        thisAttack.type = "Enemy";
         thisAttack.attackerGO = this.gameObject;
         thisAttack.attackTarget = bsm.PlayerCharacters[Random.Range(0, bsm.PlayerCharacters.Count)];
         bsm.CollectActions(thisAttack);
     }
 
+    private IEnumerator actionTimer()
+    {
+
+        if(actionStarted)
+        {
+            yield break;
+        }
+
+        actionStarted = true;
+        //animate enemy 
+        Vector3 targetPos = new Vector3(targetPlayer.transform.position.x -1.5f, targetPlayer.transform.position.y, targetPlayer.transform.position.z);
+        while(MoveToEnemy(targetPos))
+        {
+            yield return null;
+        }
+        //wait
+        yield return new WaitForSeconds(0.5f);
+        //damage
+
+        //animate back to start position
+        Vector3 originPOS = startPosition;
+        while (MoveToOrigin(originPOS))
+        {
+            yield return null;
+        }
+        //remove from bsm list
+        bsm.TurnList.RemoveAt(0);
+
+        //reset bsm to wait
+        bsm.battlestate = BattleStateMachine.PerformAction.WAIT;
+        //end coroutine
+        actionStarted = false;
+
+        //reset enemy state
+        curCooldown = 0f;
+        currentState = TurnState.PROCESSING;
+    }
+
+    private bool MoveToEnemy(Vector3 target)
+    {
+        return target != (transform.position = Vector3.MoveTowards(transform.position,target,animSpeed *Time.deltaTime));
+    }
+
+    private bool MoveToOrigin(Vector3 target)
+    {
+        return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
+    }
 }

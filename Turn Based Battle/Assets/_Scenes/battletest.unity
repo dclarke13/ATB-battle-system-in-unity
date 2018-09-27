@@ -1789,6 +1789,7 @@ MonoBehaviour:
     baseDef: 5
     curDef: 5
   currentState: 0
+  targetPlayer: {fileID: 0}
 --- !u!65 &785864358
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2846,7 +2847,7 @@ Prefab:
     - target: {fileID: 224833914414468666, guid: 057940d24614ca04a94b227322e2cca7,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.50002384
+      value: -0.5000229
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057940d24614ca04a94b227322e2cca7, type: 2}
@@ -2949,7 +2950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero:
-    name: Fiver
+    name: Hero2
     baseHP: 50
     currentHP: 50
     baseAP: 20
@@ -3560,6 +3561,7 @@ MonoBehaviour:
     baseDef: 0
     curDef: 0
   currentState: 0
+  targetPlayer: {fileID: 0}
 --- !u!65 &2040086892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3812,7 +3814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero:
-    name: Hazel
+    name: Hero1
     baseHP: 100
     currentHP: 100
     baseAP: 10

@@ -8,6 +8,7 @@ public class HandleTurns
 
     //name of attacker
     public string attacker;
+    public string type;
     //gameobject of attacker
     public GameObject attackerGO;
     //gameobject of target

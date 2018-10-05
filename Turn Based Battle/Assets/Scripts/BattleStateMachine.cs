@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.UI;
+using TMPro;
 
 public class BattleStateMachine : MonoBehaviour {
 
@@ -18,6 +20,23 @@ public class BattleStateMachine : MonoBehaviour {
     public List<GameObject> PlayerCharacters = new List<GameObject>();
     //list of enemies
     public List<GameObject> EnemyCharacters = new List<GameObject>();
+    public GameObject targetButton;
+    //transform for spacer
+    public Transform Spacer;
+
+    public enum PlayerGUI
+    {
+        ACTIVATE,
+        WAITING,
+        INPUT1,
+        INPUT2,
+        DONE
+    }
+
+    public PlayerGUI playerInput;
+
+    public List<GameObject> PlayerManagement = new List<GameObject>();
+    private HandleTurns playerChoice;
 
 	// Use this for initialization
 	void Start ()
@@ -27,7 +46,10 @@ public class BattleStateMachine : MonoBehaviour {
         PlayerCharacters.AddRange(GameObject.FindGameObjectsWithTag("Player"));
        //add enemies to list at start of battle
         EnemyCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-	}
+
+        TargetButtons();
+        Debug.Log("buttonscreated");
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -71,6 +93,27 @@ public class BattleStateMachine : MonoBehaviour {
     {
 
         TurnList.Add(turns);
+
+    }
+
+    void TargetButtons()
+    {
+        
+        foreach(GameObject enemy in EnemyCharacters)
+        {
+            GameObject newButton = Instantiate(targetButton) as GameObject;
+            TargetSelectButton button = newButton.GetComponent<TargetSelectButton>();
+
+            EnemyStateMachine cur_enemy = enemy.GetComponent<EnemyStateMachine>();
+
+            TextMeshProUGUI buttonText = newButton.transform.Find("TMP Text").gameObject.GetComponent<TextMeshProUGUI>();
+
+            buttonText.text = cur_enemy.enemy.enemyName;
+            //Debug.Log(cur_enemy.enemy.enemyName);
+            button.enemyGO = enemy;
+
+            newButton.transform.SetParent(Spacer,false);
+        }
 
     }
 

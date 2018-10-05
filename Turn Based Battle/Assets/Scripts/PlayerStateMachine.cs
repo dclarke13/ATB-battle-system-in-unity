@@ -7,6 +7,7 @@ public class PlayerStateMachine : MonoBehaviour {
 
     public BaseHero hero;
 
+    private BattleStateMachine BSM;
     public enum TurnState
     {
         PROCESSING,
@@ -28,11 +29,12 @@ public class PlayerStateMachine : MonoBehaviour {
     {
 
         currentState = TurnState.PROCESSING;
+        BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
 
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         Debug.Log(currentState);
         switch (currentState)
@@ -42,15 +44,12 @@ public class PlayerStateMachine : MonoBehaviour {
                 break;
 
             case (TurnState.ADDTOLIST):
-
+                BSM.PlayerManagement.Add(this.gameObject);
+                currentState = TurnState.WAITING;
                 break;
 
             case (TurnState.WAITING):
-
-                break;
-
-            case (TurnState.SELECTING):
-
+                //idle
                 break;
 
             case (TurnState.ACTION):

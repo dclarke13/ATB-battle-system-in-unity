@@ -6,7 +6,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
 
     public BaseEnemy enemy;
-    private BattleStateMachine bsm;
+    private BattleStateMachine BSM;
 
     public enum TurnState
     {
@@ -33,7 +33,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
 
         currentState = TurnState.PROCESSING;
-        bsm = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
+        BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
         startPosition = transform.position;
     }
 
@@ -90,8 +90,8 @@ public class EnemyStateMachine : MonoBehaviour
         thisAttack.attacker = enemy.enemyName;
         thisAttack.type = "Enemy";
         thisAttack.attackerGO = this.gameObject;
-        thisAttack.attackTarget = bsm.PlayerCharacters[Random.Range(0, bsm.PlayerCharacters.Count)];
-        bsm.CollectActions(thisAttack);
+        thisAttack.attackTarget = BSM.PlayerCharacters[Random.Range(0, BSM.PlayerCharacters.Count)];
+        BSM.CollectActions(thisAttack);
     }
 
     private IEnumerator actionTimer()
@@ -120,10 +120,10 @@ public class EnemyStateMachine : MonoBehaviour
             yield return null;
         }
         //remove from bsm list
-        bsm.TurnList.RemoveAt(0);
+        BSM.TurnList.RemoveAt(0);
 
         //reset bsm to wait
-        bsm.battlestate = BattleStateMachine.PerformAction.WAIT;
+        BSM.battlestate = BattleStateMachine.PerformAction.WAIT;
         //end coroutine
         actionStarted = false;
 

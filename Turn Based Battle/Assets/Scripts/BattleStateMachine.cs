@@ -24,6 +24,10 @@ public class BattleStateMachine : MonoBehaviour {
     //transform for spacer
     public Transform Spacer;
 
+    //panels for players to select options
+    public GameObject attackPanel;
+    public GameObject targetPanel;
+
     public enum PlayerGUI
     {
         ACTIVATE,
@@ -46,6 +50,11 @@ public class BattleStateMachine : MonoBehaviour {
         PlayerCharacters.AddRange(GameObject.FindGameObjectsWithTag("Player"));
        //add enemies to list at start of battle
         EnemyCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+        playerInput = PlayerGUI.ACTIVATE;
+
+        //set panels to inactive
+        attackPanel.SetActive(false);
+        targetPanel.SetActive(false);
 
         TargetButtons();
         Debug.Log("buttonscreated");
@@ -74,9 +83,9 @@ public class BattleStateMachine : MonoBehaviour {
                     ESM.currentState = EnemyStateMachine.TurnState.ACTION;
                 }
                 //handles heroes
-                if (TurnList[0].type == "Enemy")
+                if (TurnList[0].type == "Player")
                 {
-
+                    Debug.Log("player is in list");
                 }
 
                 battlestate = PerformAction.PERFORMACTION;
@@ -84,6 +93,26 @@ public class BattleStateMachine : MonoBehaviour {
 
             case (PerformAction.PERFORMACTION):
 
+                break;
+        }
+
+
+        switch(playerInput)
+        {
+            case (PlayerGUI.ACTIVATE):
+                if(PlayerCharacters.Count>0)
+                {
+                    PlayerCharacters[0].transform.Find("Selector").gameObject.SetActive(true);
+                    playerChoice = new HandleTurns();
+                    attackPanel.SetActive(true);
+                    playerInput = PlayerGUI.WAITING;
+                }
+                break;
+            case (PlayerGUI.WAITING):
+
+                break;
+            case (PlayerGUI.DONE):
+                playerInputDone();
                 break;
         }
 
@@ -114,6 +143,36 @@ public class BattleStateMachine : MonoBehaviour {
 
             newButton.transform.SetParent(Spacer,false);
         }
+
+    }
+
+    //attack buttons
+    public void input1()
+    {
+
+        playerChoice.attacker = PlayerCharacters[0].name;
+        playerChoice.attackerGO = PlayerCharacters[0];
+        playerChoice.type = "Player";
+
+        attackPanel.SetActive(false);
+        targetPanel.SetActive(true);
+
+    }
+    //enemy selection
+    public void input2(GameObject targetEnemy)
+    {
+        playerChoice.attackTarget = targetEnemy;
+        playerInput = PlayerGUI.DONE;
+
+    }
+
+    void playerInputDone()
+    {
+        TurnList.Add(playerChoice);
+        targetPanel.SetActive(false);
+        PlayerManagement[0].transform.Find("Selector").gameObject.SetActive(false);
+        PlayerManagement.RemoveAt(0);
+        playerInput = PlayerGUI.ACTIVATE;
 
     }
 

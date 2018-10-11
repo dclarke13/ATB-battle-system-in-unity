@@ -10,7 +10,7 @@ public class TargetSelectButton : MonoBehaviour
     public void SelectTarget()
     {
         //take info of target objects
-        GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
+        GameObject.Find("BattleManager").GetComponent<BattleStateMachine>().input2(enemyGO);
 
     }
 

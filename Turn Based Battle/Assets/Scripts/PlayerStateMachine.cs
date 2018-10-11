@@ -24,13 +24,16 @@ public class PlayerStateMachine : MonoBehaviour {
     private float maxCooldown = 5.0f;
     public Image progressBar;
 
+    //find selector game object
+    public GameObject Selector;
+
 	// Use this for initialization
 	void Start ()
     {
-
+        curCooldown = Random.Range(0, 2.5f);
         currentState = TurnState.PROCESSING;
         BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
-
+        Selector.SetActive(false);
     }
 
     // Update is called once per frame

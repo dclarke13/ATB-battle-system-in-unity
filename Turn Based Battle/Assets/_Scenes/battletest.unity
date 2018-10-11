@@ -741,7 +741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &524636496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2358,7 +2358,7 @@ Prefab:
     - target: {fileID: 224833914414468666, guid: 057940d24614ca04a94b227322e2cca7,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.50002384
+      value: -0.5000229
       objectReference: {fileID: 0}
     - target: {fileID: 114497429776869136, guid: 057940d24614ca04a94b227322e2cca7,
         type: 2}
@@ -2547,7 +2547,8 @@ MonoBehaviour:
     constitution: 5
   currentState: 0
   progressBar: {fileID: 2101877722}
-  Selector: {fileID: 1553197235}
+  selector: {fileID: 1553197235}
+  targetEnemy: {fileID: 0}
 --- !u!1 &1423897092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,7 +2982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2011529929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3360,7 +3361,8 @@ MonoBehaviour:
     constitution: 10
   currentState: 0
   progressBar: {fileID: 1150911405}
-  Selector: {fileID: 1457228338}
+  selector: {fileID: 1457228338}
+  targetEnemy: {fileID: 0}
 --- !u!114 &2101877722 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114054390401976272, guid: 057940d24614ca04a94b227322e2cca7,

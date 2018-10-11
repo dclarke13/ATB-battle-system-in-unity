@@ -85,7 +85,9 @@ public class BattleStateMachine : MonoBehaviour {
                 //handles heroes
                 if (TurnList[0].type == "Player")
                 {
-                    Debug.Log("player is in list");
+                    PlayerStateMachine PSM = performer.GetComponent<PlayerStateMachine>();
+                    PSM.targetEnemy = TurnList[0].attackTarget;
+                    PSM.currentState = PlayerStateMachine.TurnState.ACTION;
                 }
 
                 battlestate = PerformAction.PERFORMACTION;
@@ -100,9 +102,9 @@ public class BattleStateMachine : MonoBehaviour {
         switch(playerInput)
         {
             case (PlayerGUI.ACTIVATE):
-                if(PlayerCharacters.Count>0)
+                if(PlayerManagement.Count>0)
                 {
-                    PlayerCharacters[0].transform.Find("Selector").gameObject.SetActive(true);
+                    PlayerManagement[0].transform.Find("selector").gameObject.SetActive(true);
                     playerChoice = new HandleTurns();
                     attackPanel.SetActive(true);
                     playerInput = PlayerGUI.WAITING;
@@ -150,8 +152,8 @@ public class BattleStateMachine : MonoBehaviour {
     public void input1()
     {
 
-        playerChoice.attacker = PlayerCharacters[0].name;
-        playerChoice.attackerGO = PlayerCharacters[0];
+        playerChoice.attacker = PlayerManagement[0].name;
+        playerChoice.attackerGO = PlayerManagement[0];
         playerChoice.type = "Player";
 
         attackPanel.SetActive(false);
@@ -170,7 +172,7 @@ public class BattleStateMachine : MonoBehaviour {
     {
         TurnList.Add(playerChoice);
         targetPanel.SetActive(false);
-        PlayerManagement[0].transform.Find("Selector").gameObject.SetActive(false);
+        PlayerManagement[0].transform.Find("selector").gameObject.SetActive(false);
         PlayerManagement.RemoveAt(0);
         playerInput = PlayerGUI.ACTIVATE;
 

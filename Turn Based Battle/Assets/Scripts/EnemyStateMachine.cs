@@ -20,14 +20,14 @@ public class EnemyStateMachine : MonoBehaviour
     public TurnState currentState;
     //for progress bar
     private float curCooldown = 0.0f;
-    private float maxCooldown = 5.0f;
+    private float maxCooldown = 10.0f;
     // start position for animations
     private Vector3 startPosition;
     //actiontimer setup
     private bool actionStarted = false;
     //GO for target used for animation
     public GameObject targetPlayer;
-    private float animSpeed = 5f;
+    private float animSpeed = 10f;
     // Use this for initialization
     void Start()
     {

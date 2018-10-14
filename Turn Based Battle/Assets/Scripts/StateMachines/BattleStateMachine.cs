@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 using TMPro;
 
 public class BattleStateMachine : MonoBehaviour {
@@ -24,10 +24,6 @@ public class BattleStateMachine : MonoBehaviour {
     //transform for spacer
     public Transform Spacer;
 
-    //panels for players to select options
-    public GameObject attackPanel;
-    public GameObject targetPanel;
-
     public enum PlayerGUI
     {
         ACTIVATE,
@@ -42,8 +38,20 @@ public class BattleStateMachine : MonoBehaviour {
     public List<GameObject> PlayerManagement = new List<GameObject>();
     private HandleTurns playerChoice;
 
-	// Use this for initialization
-	void Start ()
+    //panels for players to select options
+    public GameObject attackPanel;
+    public GameObject targetPanel;
+    public GameObject skillPanel;
+
+    //skillattacks
+    public Transform actionSpacer;
+    public Transform skillSpacer;
+    public GameObject actionButton;
+    private List<GameObject> attackButtons = new List<GameObject>();
+
+
+    // Use this for initialization
+    void Start ()
     {
         battlestate = PerformAction.WAIT;
         //add players to list at start of battle
@@ -55,6 +63,7 @@ public class BattleStateMachine : MonoBehaviour {
         //set panels to inactive
         attackPanel.SetActive(false);
         targetPanel.SetActive(false);
+        skillPanel.SetActive(false);
 
         TargetButtons();
         Debug.Log("buttonscreated");
@@ -119,7 +128,10 @@ public class BattleStateMachine : MonoBehaviour {
                 {
                     PlayerManagement[0].transform.Find("selector").gameObject.SetActive(true);
                     playerChoice = new HandleTurns();
+                    //show panel
                     attackPanel.SetActive(true);
+                    //createbuttons
+                    createAttackButtons();
                     playerInput = PlayerGUI.WAITING;
                 }
                 break;
@@ -185,10 +197,36 @@ public class BattleStateMachine : MonoBehaviour {
     {
         TurnList.Add(playerChoice);
         targetPanel.SetActive(false);
+
+        //clean up attack panel
+        foreach(GameObject atkBtn in attackButtons)
+        {
+            Destroy(atkBtn);
+        }
+        attackButtons.Clear();
+
         PlayerManagement[0].transform.Find("selector").gameObject.SetActive(false);
         PlayerManagement.RemoveAt(0);
         playerInput = PlayerGUI.ACTIVATE;
+        
+    }
 
+    //create attack buttons
+    void createAttackButtons()
+    {
+        GameObject attackButton = Instantiate(actionButton) as GameObject;
+        TextMeshProUGUI attackbuttonText = attackButton.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
+        attackbuttonText.text = "Attack";
+        attackButton.GetComponent<Button>().onClick.AddListener(() => input1());
+        attackButton.transform.SetParent(actionSpacer, false);
+        attackButtons.Add(attackButton);
+
+        GameObject skillButton = Instantiate(actionButton) as GameObject;
+        TextMeshProUGUI skillbuttonText = skillButton.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
+        skillbuttonText.text = "Skill";
+        // skillButton.GetComponent<Button>().onClick.AddListener(() => input1());
+        skillButton.transform.SetParent(actionSpacer, false);
+        attackButtons.Add(skillButton);
     }
 
 }

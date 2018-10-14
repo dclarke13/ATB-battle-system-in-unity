@@ -61,11 +61,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Attacks\BaseAttack.cs" />
+    <Compile Include="Assets\Scripts\Attacks\BasicAttacks\JumpKick.cs" />
+    <Compile Include="Assets\Scripts\Attacks\BasicAttacks\MeleeHit.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseClass.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseHero.cs" />
     <Compile Include="Assets\Scripts\HandleTurns.cs" />
-    <Compile Include="Assets\Scripts\SelectorMovement.cs" />
     <Compile Include="Assets\Scripts\StateMachines\BattleStateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachines\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachines\PlayerStateMachine.cs" />

@@ -93,6 +93,7 @@ public class EnemyStateMachine : MonoBehaviour
         thisAttack.type = "Enemy";
         thisAttack.attackerGO = this.gameObject;
         thisAttack.attackTarget = BSM.PlayerCharacters[Random.Range(0, BSM.PlayerCharacters.Count)];
+
         BSM.CollectActions(thisAttack);
     }
 

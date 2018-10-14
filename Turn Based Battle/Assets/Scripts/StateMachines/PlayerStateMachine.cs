@@ -32,6 +32,8 @@ public class PlayerStateMachine : MonoBehaviour {
     private bool actionStarted = false;
     private Vector3 startPosition;
     private float animSpeed = 10f;
+    //death
+    private bool alive = true;
 
 	// Use this for initialization
 	void Start ()
@@ -67,7 +69,38 @@ public class PlayerStateMachine : MonoBehaviour {
                 break;
 
             case (TurnState.DEAD):
+                if(!alive)
+                {
+                    return;
+                }
+                else
+                {
+                    //change tag
+                    this.gameObject.tag = "DeadPlayer";
+                    //make not attackable
+                    BSM.PlayerCharacters.Remove(this.gameObject);
+                    //stop management of character
+                    BSM.PlayerManagement.Remove(this.gameObject);
+                    //deactive selector if on
+                    selector.SetActive(false);
+                    //reset gui
+                    BSM.attackPanel.SetActive(false);
+                    BSM.targetPanel.SetActive(false);
+                    //remove item from list
+                    for(int i =0; i< BSM.TurnList.Count;i++)
+                    {
+                        if (BSM.TurnList[i].attackerGO == this.gameObject)
+                        {
+                            BSM.TurnList.Remove(BSM.TurnList[i]);
+                        }
+                    }
+                    // change colour/ play death animation
+                    this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(155,155,155,255);
+                    //reset player input
+                    BSM.playerInput = BattleStateMachine.PlayerGUI.ACTIVATE;
 
+                    alive = false;
+                }
                 break;
         }
 

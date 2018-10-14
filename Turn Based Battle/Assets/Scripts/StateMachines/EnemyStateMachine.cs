@@ -51,8 +51,16 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case (TurnState.CHOOSEACTION):
-                chooseAction();
-                currentState = TurnState.WAITING;
+                if (BSM.PlayerCharacters.Count == 0)
+                {
+                    Debug.Log("all players dead");
+                    break;
+                }
+                else
+                {
+                    chooseAction();
+                    currentState = TurnState.WAITING;
+                }
                 break;
 
             case (TurnState.WAITING):

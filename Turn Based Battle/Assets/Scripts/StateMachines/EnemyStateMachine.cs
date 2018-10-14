@@ -28,10 +28,12 @@ public class EnemyStateMachine : MonoBehaviour
     //GO for target used for animation
     public GameObject targetPlayer;
     private float animSpeed = 10f;
+    //enemy targeter
+    public GameObject selector;
     // Use this for initialization
     void Start()
     {
-
+        selector.SetActive(false);
         currentState = TurnState.PROCESSING;
         BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
         startPosition = transform.position;
@@ -87,7 +89,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
 
         HandleTurns thisAttack = new HandleTurns();
-        thisAttack.attacker = enemy.enemyName;
+        thisAttack.attacker = enemy.theName;
         thisAttack.type = "Enemy";
         thisAttack.attackerGO = this.gameObject;
         thisAttack.attackTarget = BSM.PlayerCharacters[Random.Range(0, BSM.PlayerCharacters.Count)];

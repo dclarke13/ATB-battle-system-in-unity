@@ -6,6 +6,7 @@ public class TargetSelectButton : MonoBehaviour
 {
 
     public GameObject enemyGO;
+   
 
     public void SelectTarget()
     {
@@ -13,5 +14,18 @@ public class TargetSelectButton : MonoBehaviour
         GameObject.Find("BattleManager").GetComponent<BattleStateMachine>().input2(enemyGO);
 
     }
+
+    public void toggleOn()
+    {
+            enemyGO.transform.Find("eSelector").gameObject.SetActive(true);
+    }
+
+    public void toggleOff()
+    {
+        enemyGO.transform.Find("eSelector").gameObject.SetActive(false);
+    }
+
+
+
 
 }

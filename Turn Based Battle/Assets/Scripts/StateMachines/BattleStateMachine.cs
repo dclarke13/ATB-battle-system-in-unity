@@ -139,7 +139,7 @@ public class BattleStateMachine : MonoBehaviour {
 
             TextMeshProUGUI buttonText = newButton.transform.Find("TMP Text").gameObject.GetComponent<TextMeshProUGUI>();
 
-            buttonText.text = cur_enemy.enemy.enemyName;
+            buttonText.text = cur_enemy.enemy.theName;
             //Debug.Log(cur_enemy.enemy.enemyName);
             button.enemyGO = enemy;
 

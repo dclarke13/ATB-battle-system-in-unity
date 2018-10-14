@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class BaseHero
+public class BaseHero: BaseClass
 {
-    //charactername
-    public string name = " ";
 
     //Class setup
     public enum Type
@@ -16,13 +14,7 @@ public class BaseHero
         SUPPORT
     }
 
-    //hitpoint setup
-    public float baseHP;
-    public float currentHP;
-
-    //action point setup
-    public float baseAP;
-    public float currentAP;
+  
 
     //set up level
     public int level;

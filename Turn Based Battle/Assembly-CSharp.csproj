@@ -61,12 +61,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BaseEnemy.cs" />
-    <Compile Include="Assets\Scripts\BaseHero.cs" />
-    <Compile Include="Assets\Scripts\BattleStateMachine.cs" />
-    <Compile Include="Assets\Scripts\EnemyStateMachine.cs" />
+    <Compile Include="Assets\Scripts\BaseClasses\BaseClass.cs" />
+    <Compile Include="Assets\Scripts\BaseClasses\BaseEnemy.cs" />
+    <Compile Include="Assets\Scripts\BaseClasses\BaseHero.cs" />
     <Compile Include="Assets\Scripts\HandleTurns.cs" />
-    <Compile Include="Assets\Scripts\PlayerStateMachine.cs" />
+    <Compile Include="Assets\Scripts\SelectorMovement.cs" />
+    <Compile Include="Assets\Scripts\StateMachines\BattleStateMachine.cs" />
+    <Compile Include="Assets\Scripts\StateMachines\EnemyStateMachine.cs" />
+    <Compile Include="Assets\Scripts\StateMachines\PlayerStateMachine.cs" />
     <Compile Include="Assets\Scripts\TargetSelectButton.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

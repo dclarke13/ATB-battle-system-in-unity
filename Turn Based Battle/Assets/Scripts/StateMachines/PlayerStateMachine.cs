@@ -22,7 +22,7 @@ public class PlayerStateMachine : MonoBehaviour {
     //for progress bar
     private float curCooldown = 0.0f;
     private float maxCooldown = 5.0f;
-    public Image progressBar;
+    private Image progressBar;
 
     //find selector game object
     public GameObject selector;
@@ -35,15 +35,25 @@ public class PlayerStateMachine : MonoBehaviour {
     //death
     private bool alive = true;
 
+    //hero panel stuff
+    private HeroPanelStuff stuff;
+    public GameObject heroPanel;
+    private Transform HeroPanelSpacer;
+
 	// Use this for initialization
 	void Start ()
     {
+
         curCooldown = Random.Range(0, 2.5f);
         currentState = TurnState.PROCESSING;
         BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
         selector.SetActive(false);
         startPosition = transform.position;
-    }
+        //find spacer
+        HeroPanelSpacer = GameObject.Find("BattleCanvas").transform.Find("HeroPanel").transform.Find("HeroPanelSpacer");
+        //create panel & fill info
+        createHeroPanel();
+        }
 
     // Update is called once per frame
     void Update ()
@@ -174,8 +184,31 @@ public class PlayerStateMachine : MonoBehaviour {
         //check if dead
         if (hero.currentHP <=0)
         {
+            hero.currentHP = 0;
             currentState = TurnState.DEAD;
         }
+
+        updateHeroPanel();
+    }
+
+    void createHeroPanel()
+    {
+        heroPanel = Instantiate(heroPanel) as GameObject;
+        stuff = heroPanel.GetComponent<HeroPanelStuff>();
+
+        stuff.heroName.text = hero.theName;
+        stuff.heroHP.text = "HP: " + hero.currentHP + "/" + hero.baseHP;
+        stuff.heroAP.text = "AP: " + hero.currentAP + "/" + hero.baseAP;
+        progressBar = stuff.progressbar;
+
+        heroPanel.transform.SetParent(HeroPanelSpacer, false);
+    }
+
+    //update UI
+    void updateHeroPanel()
+    {
+        stuff.heroHP.text = "HP: " + hero.currentHP + "/" + hero.baseHP;
+        stuff.heroAP.text = "AP: " + hero.currentAP + "/" + hero.baseAP;
     }
 
 }

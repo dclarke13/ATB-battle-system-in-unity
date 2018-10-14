@@ -20,4 +20,7 @@ public class BaseClass {
 
     public float baseDef;
     public float curDef;
+
+    //attacks that can be done
+    public List<BaseAttack> attacks = new List<BaseAttack>();
 }

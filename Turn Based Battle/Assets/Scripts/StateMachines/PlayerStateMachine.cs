@@ -104,7 +104,7 @@ public class PlayerStateMachine : MonoBehaviour {
         //wait
         yield return new WaitForSeconds(0.5f);
         //damage
-
+        
         //animate back to start position
         Vector3 originPOS = startPosition;
         while (MoveToOrigin(originPOS))
@@ -132,6 +132,17 @@ public class PlayerStateMachine : MonoBehaviour {
     private bool MoveToOrigin(Vector3 target)
     {
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
+    }
+
+    public void takeDamage(float damageAmount)
+    {
+        //reduce hp by damage amount
+        hero.currentHP -= damageAmount;
+        //check if dead
+        if (hero.currentHP <=0)
+        {
+            currentState = TurnState.DEAD;
+        }
     }
 
 }

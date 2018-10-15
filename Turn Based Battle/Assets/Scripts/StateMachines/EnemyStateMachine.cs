@@ -165,4 +165,18 @@ public class EnemyStateMachine : MonoBehaviour
         targetPlayer.GetComponent<PlayerStateMachine>().takeDamage(damageDone);
     }
 
+    public void takeDamage(float damageAmount)
+    {
+        //reduce hp by damage amount
+        enemy.currentHP -= damageAmount;
+        //check if dead
+        if (enemy.currentHP <= 0)
+        {
+            enemy.currentHP = 0;
+            currentState = TurnState.DEAD;
+        }
+
+    }
+
+
 }

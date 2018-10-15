@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33536953112742040}
   - component: {fileID: 23218698006601866}
   - component: {fileID: 65699126735905326}
-  - component: {fileID: 114574799317691712}
   m_Layer: 0
   m_Name: selector
   m_TagString: Untagged
@@ -55,8 +54,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1868457952593124}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.39, y: 0.47, z: -2.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.59, y: 0.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813970266722792}
@@ -184,18 +183,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114574799317691712
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1387049323265732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec8aebc777eb2340a207996a4477486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
 --- !u!114 &114669486113435082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,23 +195,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero:
-    theName: BaseHero
-    baseHP: 0
-    currentHP: 0
-    baseAP: 0
-    currentAP: 0
-    baseATK: 0
-    curATK: 0
-    baseDef: 0
-    curDef: 0
+    theName: Hero1
+    baseHP: 100
+    currentHP: 100
+    baseAP: 20
+    currentAP: 20
+    baseATK: 10
+    curATK: 10
+    baseDef: 10
+    curDef: 10
+    attacks:
+    - {fileID: 114877338631184586, guid: 7811bb6220d2e924785ee89a8fa4a0d3, type: 2}
     level: 1
     startingXP: 0
     currentXP: 0
-    str: 0
-    spd: 0
-    intel: 0
-    constitution: 0
+    str: 5
+    spd: 5
+    intel: 5
+    constitution: 5
+    skillList:
+    - {fileID: 114349649258018278, guid: a7c119ebb3e7b824ca6e5ebff11f0e71, type: 2}
+    - {fileID: 114296420672448318, guid: be8cecc3b6f37514a9419de078cf5348, type: 2}
   currentState: 0
-  progressBar: {fileID: 0}
   selector: {fileID: 1387049323265732}
   targetEnemy: {fileID: 0}
+  heroPanel: {fileID: 1250266530653848, guid: 057940d24614ca04a94b227322e2cca7, type: 2}

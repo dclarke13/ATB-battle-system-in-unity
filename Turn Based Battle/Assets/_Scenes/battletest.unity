@@ -258,6 +258,11 @@ Prefab:
     - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
         type: 2}
       propertyPath: hero.attacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
+        type: 2}
+      propertyPath: hero.skillList.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4247448384139960, guid: 5c9a5a23346579441856c6171fce1419, type: 2}
@@ -384,7 +389,20 @@ Prefab:
       value: 
       objectReference: {fileID: 1250266530653848, guid: 057940d24614ca04a94b227322e2cca7,
         type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
+        type: 2}
+      propertyPath: hero.skillList.Array.data[0]
+      value: 
+      objectReference: {fileID: 114349649258018278, guid: a7c119ebb3e7b824ca6e5ebff11f0e71,
+        type: 2}
+    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
+        type: 2}
+      propertyPath: hero.skillList.Array.data[1]
+      value: 
+      objectReference: {fileID: 114296420672448318, guid: be8cecc3b6f37514a9419de078cf5348,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5c9a5a23346579441856c6171fce1419, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &524636495
@@ -658,6 +676,8 @@ MonoBehaviour:
   actionSpacer: {fileID: 1862926633}
   skillSpacer: {fileID: 1766725285}
   actionButton: {fileID: 1491017446877306, guid: f76231f30eec17c449196942098d366a,
+    type: 2}
+  skillsButton: {fileID: 1295613890318266, guid: 257cc54360eb58f4ea6751ec1dabcd49,
     type: 2}
 --- !u!4 &737222527
 Transform:
@@ -941,7 +961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1105340079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1248,11 +1268,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.attacks.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4247448384139960, guid: 5c9a5a23346579441856c6171fce1419, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4.59
@@ -1289,94 +1304,6 @@ Prefab:
       propertyPath: m_Name
       value: Hero1
       objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.theName
-      value: Hero1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.baseHP
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.currentHP
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.baseAP
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.currentAP
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.baseATK
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.curATK
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.baseDef
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.curDef
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.str
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.spd
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.intel
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.constitution
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: progressBar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.attacks.Array.data[0]
-      value: 
-      objectReference: {fileID: 114877338631184586, guid: 7811bb6220d2e924785ee89a8fa4a0d3,
-        type: 2}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: hero.attacks.Array.data[1]
-      value: 
-      objectReference: {fileID: 114281690579476242, guid: 617ec5085bac9b14da4a5bff7301266f,
-        type: 2}
-    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
-        type: 2}
-      propertyPath: heroPanel
-      value: 
-      objectReference: {fileID: 1250266530653848, guid: 057940d24614ca04a94b227322e2cca7,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c9a5a23346579441856c6171fce1419, type: 2}
   m_IsPrefabAsset: 0

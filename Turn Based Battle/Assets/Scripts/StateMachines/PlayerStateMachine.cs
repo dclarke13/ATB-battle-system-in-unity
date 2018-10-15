@@ -147,7 +147,7 @@ public class PlayerStateMachine : MonoBehaviour {
         //wait
         yield return new WaitForSeconds(0.5f);
         //damage
-        
+        doDamage();
         //animate back to start position
         Vector3 originPOS = startPosition;
         while (MoveToOrigin(originPOS))
@@ -189,6 +189,13 @@ public class PlayerStateMachine : MonoBehaviour {
         }
 
         updateHeroPanel();
+    }
+
+    //do damage
+    void doDamage()
+    {
+        float damageDone = hero.curATK + BSM.TurnList[0].chosenAttack.attackDmg;
+        targetEnemy.GetComponent<EnemyStateMachine>().takeDamage(damageDone);
     }
 
     void createHeroPanel()

@@ -47,6 +47,7 @@ public class BattleStateMachine : MonoBehaviour {
     public Transform actionSpacer;
     public Transform skillSpacer;
     public GameObject actionButton;
+    public GameObject skillsButton;
     private List<GameObject> attackButtons = new List<GameObject>();
 
 
@@ -181,6 +182,8 @@ public class BattleStateMachine : MonoBehaviour {
         playerChoice.attackerGO = PlayerManagement[0];
         playerChoice.type = "Player";
 
+        playerChoice.chosenAttack = PlayerManagement[0].GetComponent<PlayerStateMachine>().hero.attacks[0];
+
         attackPanel.SetActive(false);
         targetPanel.SetActive(true);
 
@@ -224,9 +227,52 @@ public class BattleStateMachine : MonoBehaviour {
         GameObject skillButton = Instantiate(actionButton) as GameObject;
         TextMeshProUGUI skillbuttonText = skillButton.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
         skillbuttonText.text = "Skill";
-        // skillButton.GetComponent<Button>().onClick.AddListener(() => input1());
+        skillButton.GetComponent<Button>().onClick.AddListener(() => input3());
         skillButton.transform.SetParent(actionSpacer, false);
         attackButtons.Add(skillButton);
+
+        if(PlayerCharacters[0].GetComponent<PlayerStateMachine>().hero.skillList.Count>0)
+        {
+            foreach(BaseAttack skillAttack in PlayerCharacters[0].GetComponent<PlayerStateMachine>().hero.skillList)
+            {
+                GameObject skills = Instantiate(skillsButton) as GameObject;
+                TextMeshProUGUI skillText = skills.transform.Find("Text").gameObject.GetComponent<TextMeshProUGUI>();
+                skillText.text = skillAttack.attackName;
+                SkillButtons skillB = skills.GetComponent<SkillButtons>();
+                skillB.skillAttackToPerform = skillAttack;
+
+                skillB.transform.SetParent(skillSpacer, false);
+                attackButtons.Add(skills);
+
+            }
+        }
+        else
+        {
+            skillButton.GetComponent<Button>().interactable = false;
+        }
+
+    }
+
+    //chosen skill attack
+    public void input4(BaseAttack chosenSkill)
+    {
+        playerChoice.attacker = PlayerManagement[0].name;
+        playerChoice.attackerGO = PlayerManagement[0];
+        playerChoice.type = "Player";
+
+        playerChoice.chosenAttack = chosenSkill;
+        skillPanel.SetActive(false);
+        targetPanel.SetActive(true);
+    }
+
+    //switch to skill attacks
+    public void input3()
+    {
+
+        attackPanel.SetActive(false);
+        skillPanel.SetActive(true);
+
+
     }
 
 }

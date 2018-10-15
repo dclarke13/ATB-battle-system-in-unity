@@ -28,5 +28,7 @@ public class BaseHero: BaseClass
     public int spd;
     public int intel;
     public int constitution;
+
+    public List<BaseAttack> skillList = new List<BaseAttack>();
 	
 }

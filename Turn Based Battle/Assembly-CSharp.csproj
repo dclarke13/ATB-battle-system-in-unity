@@ -64,6 +64,9 @@
     <Compile Include="Assets\Scripts\Attacks\BaseAttack.cs" />
     <Compile Include="Assets\Scripts\Attacks\BasicAttacks\JumpKick.cs" />
     <Compile Include="Assets\Scripts\Attacks\BasicAttacks\MeleeHit.cs" />
+    <Compile Include="Assets\Scripts\Attacks\SkillButtons.cs" />
+    <Compile Include="Assets\Scripts\Attacks\Skills\skill1.cs" />
+    <Compile Include="Assets\Scripts\Attacks\Skills\Skill2.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseClass.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseHero.cs" />

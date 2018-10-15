@@ -10,7 +10,11 @@ public class BattleStateMachine : MonoBehaviour {
     {
         WAIT,
         TAKEACTION,
-        PERFORMACTION
+        PERFORMACTION,
+        CHECKALIVE,
+        WIN,
+        LOSE
+
     }
 
     public PerformAction battlestate;
@@ -117,6 +121,35 @@ public class BattleStateMachine : MonoBehaviour {
                 break;
 
             case (PerformAction.PERFORMACTION):
+                //idle
+                break;
+
+            case (PerformAction.CHECKALIVE):
+                //check if lost
+                if (PlayerCharacters.Count<1)
+                {
+                    battlestate = PerformAction.LOSE;
+                }
+                //check if won
+                else if(EnemyCharacters.Count<1)
+                {
+                    battlestate = PerformAction.WIN;
+                }
+                //move to next state
+                else
+                {
+                    //call function
+                    clearAttackPanel();
+                    playerInput = PlayerGUI.ACTIVATE;
+
+                }
+                break;
+
+            case (PerformAction.WIN):
+
+                break;
+
+            case (PerformAction.LOSE):
 
                 break;
         }
@@ -199,19 +232,28 @@ public class BattleStateMachine : MonoBehaviour {
     void playerInputDone()
     {
         TurnList.Add(playerChoice);
-        targetPanel.SetActive(false);
-
         //clean up attack panel
-        foreach(GameObject atkBtn in attackButtons)
-        {
-            Destroy(atkBtn);
-        }
-        attackButtons.Clear();
+        clearAttackPanel();
 
         PlayerManagement[0].transform.Find("selector").gameObject.SetActive(false);
         PlayerManagement.RemoveAt(0);
         playerInput = PlayerGUI.ACTIVATE;
         
+    }
+
+    void clearAttackPanel()
+    {
+
+        targetPanel.SetActive(false);
+        attackPanel.SetActive(false);
+        skillPanel.SetActive(false);
+
+        foreach (GameObject atkBtn in attackButtons)
+        {
+            Destroy(atkBtn);
+        }
+        attackButtons.Clear();
+
     }
 
     //create attack buttons

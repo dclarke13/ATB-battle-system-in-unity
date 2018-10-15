@@ -107,7 +107,7 @@ public class PlayerStateMachine : MonoBehaviour {
                     // change colour/ play death animation
                     this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(155,155,155,255);
                     //reset player input
-                    BSM.playerInput = BattleStateMachine.PlayerGUI.ACTIVATE;
+                    BSM.battlestate = BattleStateMachine.PerformAction.CHECKALIVE;
 
                     alive = false;
                 }

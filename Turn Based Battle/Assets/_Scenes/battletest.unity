@@ -319,7 +319,7 @@ Prefab:
     - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
         type: 2}
       propertyPath: hero.currentHP
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
         type: 2}

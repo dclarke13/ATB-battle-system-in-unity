@@ -158,14 +158,23 @@ public class PlayerStateMachine : MonoBehaviour {
         BSM.TurnList.RemoveAt(0);
 
         //reset bsm to wait
-        BSM.battlestate = BattleStateMachine.PerformAction.WAIT;
-        //end coroutine
-        actionStarted = false;
+        if (BSM.battlestate != BattleStateMachine.PerformAction.WIN && BSM.battlestate != BattleStateMachine.PerformAction.LOSE)
+        {
+            BSM.battlestate = BattleStateMachine.PerformAction.WAIT;
+            //end coroutine
 
-        //reset enemy state
-        curCooldown = 0f;
-        currentState = TurnState.PROCESSING;
+
+            //reset enemy state
+            curCooldown = 0f;
+            currentState = TurnState.PROCESSING;
+        }
+        else
+        {
+            currentState = TurnState.WAITING;
+        }
+        actionStarted = false;
     }
+       
 
     private bool MoveToEnemy(Vector3 target)
     {

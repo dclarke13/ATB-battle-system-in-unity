@@ -31,6 +31,8 @@ public class EnemyStateMachine : MonoBehaviour
     //enemy targeter
     public GameObject selector;
     // Use this for initialization
+
+    private bool alive = true;
     void Start()
     {
         selector.SetActive(false);
@@ -72,7 +74,37 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
 
             case (TurnState.DEAD):
+                if(!alive)
+                {
 
+                    return;
+                }
+                else
+                {
+                    //change tag
+                    this.gameObject.tag = "DeadEnemy";
+                    //make not attackable
+                    BSM.EnemyCharacters.Remove(this.gameObject);
+                    //disable selector if enabled
+                    selector.SetActive(false);
+                    //remove enemies attacks
+                    for(int i=0;i<BSM.TurnList.Count;i++)
+                    {
+                        if(BSM.TurnList[i].attackerGO == this.gameObject)
+                        {
+                            BSM.TurnList.Remove(BSM.TurnList[i]);
+                        }
+                    }
+
+                    //change colour/play death animation
+                    this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(155, 155, 155, 255);
+                    //set alive false
+                    alive = false;
+                    //reset target buttons
+                    BSM.TargetButtons();
+                    //check if battle has been won/lost
+                    BSM.battlestate = BattleStateMachine.PerformAction.CHECKALIVE;
+                }
                 break;
 
         }

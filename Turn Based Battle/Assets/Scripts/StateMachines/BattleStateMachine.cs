@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
+//remember to remove scene management in win and lose states
+
 
 public class BattleStateMachine : MonoBehaviour {
 
@@ -53,6 +57,9 @@ public class BattleStateMachine : MonoBehaviour {
     public GameObject actionButton;
     public GameObject skillsButton;
     private List<GameObject> attackButtons = new List<GameObject>();
+
+    //
+    private List<GameObject> targetBtns = new List<GameObject>();
 
 
     // Use this for initialization
@@ -146,11 +153,17 @@ public class BattleStateMachine : MonoBehaviour {
                 break;
 
             case (PerformAction.WIN):
-
+                Debug.Log("you win");
+                for (int i = 0; i < PlayerCharacters.Count; i++)
+                {
+                    PlayerCharacters[i].GetComponent<PlayerStateMachine>().currentState = PlayerStateMachine.TurnState.WAITING;
+                }
+                SceneManager.LoadScene("win");
                 break;
 
             case (PerformAction.LOSE):
-
+                Debug.Log("you lose");
+                SceneManager.LoadScene("lose");
                 break;
         }
 
@@ -186,9 +199,15 @@ public class BattleStateMachine : MonoBehaviour {
 
     }
 
-    void TargetButtons()
+    public void TargetButtons()
     {
-        
+        //cleanup
+        foreach(GameObject targetBut in targetBtns)
+        {
+            Destroy(targetBut);
+        }
+        targetBtns.Clear();
+        //create buttons
         foreach(GameObject enemy in EnemyCharacters)
         {
             GameObject newButton = Instantiate(targetButton) as GameObject;
@@ -203,6 +222,7 @@ public class BattleStateMachine : MonoBehaviour {
             button.enemyGO = enemy;
 
             newButton.transform.SetParent(Spacer,false);
+            targetBtns.Add(newButton);
         }
 
     }

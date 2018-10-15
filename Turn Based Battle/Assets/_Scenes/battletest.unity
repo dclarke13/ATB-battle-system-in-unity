@@ -319,7 +319,7 @@ Prefab:
     - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
         type: 2}
       propertyPath: hero.currentHP
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
         type: 2}
@@ -726,8 +726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
     theName: Enemy1
-    baseHP: 20
-    currentHP: 20
+    baseHP: 50
+    currentHP: 50
     baseAP: 10
     currentAP: 10
     baseATK: 5
@@ -1174,8 +1174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
     theName: Enemy2
-    baseHP: 20
-    currentHP: 20
+    baseHP: 50
+    currentHP: 50
     baseAP: 10
     currentAP: 10
     baseATK: 5
@@ -1304,6 +1304,11 @@ Prefab:
       propertyPath: m_Name
       value: Hero1
       objectReference: {fileID: 0}
+    - target: {fileID: 114669486113435082, guid: 5c9a5a23346579441856c6171fce1419,
+        type: 2}
+      propertyPath: hero.currentHP
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c9a5a23346579441856c6171fce1419, type: 2}
   m_IsPrefabAsset: 0
@@ -1338,7 +1343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011441036, y: 0.026}
   m_AnchorMax: {x: 0.98855895, y: 0.9804926}
-  m_AnchoredPosition: {x: 0.26999664, y: -0.002494812}
+  m_AnchoredPosition: {x: 0.269989, y: -0.002494812}
   m_SizeDelta: {x: 0.53999996, y: -0.0050201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766725286
@@ -1492,7 +1497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011441036, y: 0.026}
   m_AnchorMax: {x: 0.98855895, y: 0.9804926}
-  m_AnchoredPosition: {x: 0.26999664, y: -0.002494812}
+  m_AnchoredPosition: {x: 0.269989, y: -0.002494812}
   m_SizeDelta: {x: 0.53999996, y: -0.0050201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862926634
@@ -1717,7 +1722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.011441036, y: 0.026}
   m_AnchorMax: {x: 0.98855895, y: 0.9804926}
-  m_AnchoredPosition: {x: 0.26999664, y: -0.002494812}
+  m_AnchoredPosition: {x: 0.27000427, y: -0.002494812}
   m_SizeDelta: {x: 0.53999996, y: -0.0050201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128207137

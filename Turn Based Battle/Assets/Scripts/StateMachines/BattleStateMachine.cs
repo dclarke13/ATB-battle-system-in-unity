@@ -158,12 +158,12 @@ public class BattleStateMachine : MonoBehaviour {
                 {
                     PlayerCharacters[i].GetComponent<PlayerStateMachine>().currentState = PlayerStateMachine.TurnState.WAITING;
                 }
-                SceneManager.LoadScene("win");
+               // SceneManager.LoadScene("win");
                 break;
 
             case (PerformAction.LOSE):
                 Debug.Log("you lose");
-                SceneManager.LoadScene("lose");
+               // SceneManager.LoadScene("lose");
                 break;
         }
 

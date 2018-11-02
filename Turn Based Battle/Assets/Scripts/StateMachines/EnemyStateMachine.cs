@@ -88,14 +88,20 @@ public class EnemyStateMachine : MonoBehaviour
                     //disable selector if enabled
                     selector.SetActive(false);
                     //remove enemies attacks
-                    for(int i=0;i<BSM.TurnList.Count;i++)
+                    if (BSM.EnemyCharacters.Count > 0)
                     {
-                        if(BSM.TurnList[i].attackerGO == this.gameObject)
+                        for (int i = 0; i < BSM.TurnList.Count; i++)
                         {
-                            BSM.TurnList.Remove(BSM.TurnList[i]);
+                            if (BSM.TurnList[i].attackerGO == this.gameObject)
+                            {
+                                BSM.TurnList.Remove(BSM.TurnList[i]);
+                            }
+                            if (BSM.TurnList[i].attackTarget == this.gameObject)
+                            {
+                                BSM.TurnList[i].attackTarget = BSM.EnemyCharacters[Random.Range(0, BSM.EnemyCharacters.Count)];
+                            }
                         }
                     }
-
                     //change colour/play death animation
                     this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(155, 155, 155, 255);
                     //set alive false

@@ -97,11 +97,18 @@ public class PlayerStateMachine : MonoBehaviour {
                     BSM.attackPanel.SetActive(false);
                     BSM.targetPanel.SetActive(false);
                     //remove item from list
-                    for(int i =0; i< BSM.TurnList.Count;i++)
+                    if (BSM.PlayerCharacters.Count > 0)
                     {
-                        if (BSM.TurnList[i].attackerGO == this.gameObject)
+                        for (int i = 0; i < BSM.TurnList.Count; i++)
                         {
-                            BSM.TurnList.Remove(BSM.TurnList[i]);
+                            if (BSM.TurnList[i].attackerGO == this.gameObject)
+                            {
+                                BSM.TurnList.Remove(BSM.TurnList[i]);
+                            }
+                            if (BSM.TurnList[i].attackTarget == this.gameObject)
+                            {
+                                BSM.TurnList[i].attackTarget = BSM.PlayerCharacters[Random.Range(0, BSM.PlayerCharacters.Count)];
+                            }
                         }
                     }
                     // change colour/ play death animation

@@ -70,9 +70,11 @@
     <Compile Include="Assets\Scripts\BaseClasses\BaseClass.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseEnemy.cs" />
     <Compile Include="Assets\Scripts\BaseClasses\BaseHero.cs" />
+    <Compile Include="Assets\Scripts\Gmanager.cs" />
     <Compile Include="Assets\Scripts\HandleTurns.cs" />
     <Compile Include="Assets\Scripts\HeroPanelStuff.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\StateMachines\BattleStateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachines\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachines\PlayerStateMachine.cs" />

@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        transform.position = Gmanager.instance.nextPlayerPos;
 	}
 	
 	// Update is called once per frame
@@ -27,4 +28,22 @@ public class PlayerMovement : MonoBehaviour {
         GetComponent<Rigidbody>().velocity = movement * moveSpeed;//* Time.deltaTime;
 
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "EnterTown")
+        {
+            CollisionHandler col = other.gameObject.GetComponent<CollisionHandler>();
+            Gmanager.instance.nextPlayerPos = col.spawnPoint.transform.position;
+            Gmanager.instance.sceneToLoad = col.sceneToLoad;
+            Gmanager.instance.LoadNewScene();
+        }
+        if(other.tag == "LeaveTown")
+        {
+            CollisionHandler col = other.gameObject.GetComponent<CollisionHandler>();
+            Gmanager.instance.nextPlayerPos = col.spawnPoint.transform.position;
+            Gmanager.instance.sceneToLoad = col.sceneToLoad;
+            Gmanager.instance.LoadNewScene();
+        }
+    }
 }

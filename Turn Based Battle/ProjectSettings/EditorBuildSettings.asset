@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/win.unity
     guid: f927473607550f64bb5bcb4a29c58db1
+  - enabled: 1
+    path: Assets/_Scenes/towntest1.unity
+    guid: 6800f80f61d483a4caf71f9ae5add8e5
+  - enabled: 1
+    path: Assets/_Scenes/maptest1.unity
+    guid: 9333221e7a5b5854da7a940c7cae66cc
   m_configObjects: {}

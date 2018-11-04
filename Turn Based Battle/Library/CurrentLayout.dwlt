@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 681, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 6223
+  controlID: 2489
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 6224
+  controlID: 2490
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 6225
+  controlID: 2491
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 348
     height: 646
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -201,8 +201,8 @@ MonoBehaviour:
     y: 0
     width: 1198
     height: 646
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -283,11 +283,11 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 350
-    y: 19
+    y: 92
     width: 1194
     height: 625
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 1
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -368,28 +368,28 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: c62c0000
     m_LastClickedID: 0
-    m_ExpandedIDs: ba65feff086afeffcaa1feff2ab1feff5eaeffff7caeffff52bfffff1cc9ffffc6d2ffffe0fbffff00000000b02f000076330000
+    m_ExpandedIDs: accafeff32d5feff44d5feffe6edfeff8033ffff8833ffff20b3ffffe0fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: playerCharacter
+      m_OriginalName: playerCharacter
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -24388
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
-  - towntest1
+  - maptest1
   m_CurrenRootInstanceID: 0
   m_LockTracker:
     m_IsLocked: 0
@@ -420,14 +420,14 @@ MonoBehaviour:
     height: 625
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 2981.2338263841657
+  lastFramingTime: 2642.181883105895
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.3230357, y: -13.095622, z: 9.373344}
+    m_Target: {x: 18.684978, y: 3.2425346, z: 10.640928}
     speed: 2
-    m_Value: {x: 5.3230357, y: -13.095622, z: 9.373344}
+    m_Value: {x: 18.684978, y: 3.2425346, z: 10.640928}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -455,13 +455,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.3816861, y: 0.13785091, z: -0.05768411, w: 0.9121324}
+    m_Target: {x: -0.4107616, y: 0.009577947, z: -0.0043154606, w: -0.91168225}
     speed: 2
-    m_Value: {x: -0.38168612, y: -0.13785091, z: 0.05768411, w: -0.9121324}
+    m_Value: {x: -0.4107616, y: 0.009577947, z: -0.0043154606, w: -0.91168225}
   m_Size:
-    m_Target: 26.500467
+    m_Target: 45.41921
     speed: 2
-    m_Value: 26.500467
+    m_Value: 45.41921
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -535,11 +535,11 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/_Scenes
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/_Scenes
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\Scruffy\Desktop\unity projects\ATB-battle-system-in-unity\Turn
     Based Battle
@@ -547,9 +547,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 69}
-    m_SelectedIDs: 4c2c0000
-    m_LastClickedID: 11340
-    m_ExpandedIDs: 00000000a62b0000042c00001e2c00004c2c0000c42c0000c62c0000ae2d000000ca9a3b
+    m_SelectedIDs: c62c0000
+    m_LastClickedID: 11462
+    m_ExpandedIDs: 00000000ac2b00000a2c0000242c0000522c0000ca2c0000cc2c0000b42d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -577,7 +577,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a62b0000042c00001e2c00004c2c0000c42c0000c62c0000ae2d000000ca9a3b
+    m_ExpandedIDs: 00000000ac2b00000a2c0000242c0000522c0000ca2c0000cc2c0000b42d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -621,7 +621,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 4}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

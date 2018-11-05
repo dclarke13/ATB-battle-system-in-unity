@@ -7,6 +7,17 @@ public class Gmanager : MonoBehaviour {
 
     public static Gmanager instance;
 
+    //class for random monsters
+    [System.Serializable]
+    public class RegionData
+    {
+        public string regionname;
+        public int maxEnemies = 4;
+        public List<GameObject> possibleEnemies = new List<GameObject>();
+    }
+
+    public List<RegionData> Regions = new List<RegionData>();
+
     public GameObject playerCharacter;
 	
     //positions for spawning
@@ -17,6 +28,21 @@ public class Gmanager : MonoBehaviour {
     //battle scene stuff
     public string sceneToLoad;
     public string lastScene;
+
+    //booleans for checking if player is in danger zone
+    public bool isWalking = false;
+    public bool canEncounterEnemy = false;
+    public bool gotEncountered = false;
+
+    //state machine enum
+    public enum gameStates
+    {
+        WORLD_STATE,
+        TOWN_STATE,
+        BATTLE_STATE,
+        IDLE
+    }
+    public gameStates gamestate;
 
     // Use this for initialization
     void Awake () {
@@ -42,6 +68,35 @@ public class Gmanager : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        switch(gamestate)
+        {
+            case (gameStates.WORLD_STATE):
+                if(isWalking)
+                {
+                    RandomEncounter();
+                }
+                if(gotEncountered)
+                {
+                    gamestate = gameStates.BATTLE_STATE;
+                }
+
+                break;
+            case (gameStates.TOWN_STATE):
+
+                break;
+            case (gameStates.BATTLE_STATE):
+                //load battle scene
+                
+                //go to idle
+                break;
+            case (gameStates.IDLE):
+
+                break;
+        }
+    }
+
     public void LoadNewScene()
     {
 
@@ -49,4 +104,24 @@ public class Gmanager : MonoBehaviour {
 
     }
 	
+    void RandomEncounter()
+    {
+        if(isWalking && canEncounterEnemy)
+        {
+            
+            if(Random.Range(0,1000) < 10)
+            {
+                Debug.Log("Enocunter Occured");
+                gotEncountered = true;
+            }
+
+        }
+    }
+
+    void startBattle()
+    {
+
+
+
+    }
 }

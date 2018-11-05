@@ -9,6 +9,8 @@ TagManager:
   - DeadEnemy
   - EnterTown
   - LeaveTown
+  - dangerzonefield
+  - dangerzoneforest
   layers:
   - Default
   - TransparentFX

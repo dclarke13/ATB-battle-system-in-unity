@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 269780430}
   m_Layer: 0
   m_Name: dangerzone1
-  m_TagString: Untagged
+  m_TagString: dangerzoneforest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,6 +521,21 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.data[0].possibleEnemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.data[1].possibleEnemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4469349483193444, guid: 34328baa30ce3ce42b532f2bfb60efcc, type: 2}
       propertyPath: m_LocalPosition.x
       value: 5.3230357
@@ -553,6 +568,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.data[0].regionname
+      value: dangerzoneforest
+      objectReference: {fileID: 0}
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.data[0].maxEnemies
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.data[1].regionname
+      value: dangerzonefield
+      objectReference: {fileID: 0}
+    - target: {fileID: 114724508252678602, guid: 34328baa30ce3ce42b532f2bfb60efcc,
+        type: 2}
+      propertyPath: Regions.Array.data[1].maxEnemies
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34328baa30ce3ce42b532f2bfb60efcc, type: 2}
   m_IsPrefabAsset: 0
@@ -568,8 +603,8 @@ GameObject:
   - component: {fileID: 1567395759}
   - component: {fileID: 1567395758}
   m_Layer: 0
-  m_Name: dangerzone2w
-  m_TagString: Untagged
+  m_Name: dangerzone2
+  m_TagString: dangerzonefield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

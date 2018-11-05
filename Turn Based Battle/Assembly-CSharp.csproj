@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\HeroPanelStuff.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuButton.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Regions\RegionData.cs" />
     <Compile Include="Assets\Scripts\StateMachines\BattleStateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachines\EnemyStateMachine.cs" />
     <Compile Include="Assets\Scripts\StateMachines\PlayerStateMachine.cs" />

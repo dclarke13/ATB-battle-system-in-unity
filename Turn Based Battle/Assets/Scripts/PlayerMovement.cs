@@ -15,7 +15,18 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        transform.position = Gmanager.instance.nextPlayerPos;
+        if(Gmanager.instance.nextspawnpoint != " ")
+        {
+            GameObject spawnpoint = GameObject.Find(Gmanager.instance.nextspawnpoint);
+            transform.position = spawnpoint.transform.position;
+
+            Gmanager.instance.nextspawnpoint = " ";
+        }
+        else if (Gmanager.instance.prevPlayerPos != Vector3.zero)
+        {
+            transform.position = Gmanager.instance.prevPlayerPos;
+            Gmanager.instance.prevPlayerPos = Vector3.zero;
+        }
 	}
 	
 	// Update is called once per frame
@@ -42,33 +53,27 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "EnterTown")
+
+        if(other.tag == "enterexit")
         {
+
             CollisionHandler col = other.gameObject.GetComponent<CollisionHandler>();
-            Gmanager.instance.nextPlayerPos = col.spawnPoint.transform.position;
+            Gmanager.instance.nextspawnpoint = col.spawnpointName;
             Gmanager.instance.sceneToLoad = col.sceneToLoad;
             Gmanager.instance.LoadNewScene();
         }
-        if(other.tag == "LeaveTown")
+      
+        if (other.tag == "dangerzone")
         {
-            CollisionHandler col = other.gameObject.GetComponent<CollisionHandler>();
-            Gmanager.instance.nextPlayerPos = col.spawnPoint.transform.position;
-            Gmanager.instance.sceneToLoad = col.sceneToLoad;
-            Gmanager.instance.LoadNewScene();
+            RegionData region = other.gameObject.GetComponent<RegionData>();
+            Gmanager.instance.curRegion = region;
         }
-        if(other.tag == "dangerzonefield")
-        {
-            Gmanager.instance.curRegion = 0;
-        }
-        if (other.tag == "dangerzoneforest")
-        {
-            Gmanager.instance.curRegion = 1;
-        }
+        
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "dangerzonefield"||other.tag == "dangerzoneforest")
+        if (other.tag == "dangerzone")
         {
             Gmanager.instance.canEncounterEnemy = true;
         }
@@ -76,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "dangerzonefield" || other.tag == "dangerzoneforest")
+        if (other.tag == "dangerzone")
         {
             Gmanager.instance.canEncounterEnemy = false;
         }

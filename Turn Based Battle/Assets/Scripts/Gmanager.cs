@@ -7,19 +7,8 @@ public class Gmanager : MonoBehaviour {
 
     public static Gmanager instance;
 
-    //class for random monsters
-    [System.Serializable]
-    public class RegionData
-    {
-        public string regionname;
-        public int maxEnemies = 4;
-        public string battleScene;
-        public List<GameObject> possibleEnemies = new List<GameObject>();
-    }
 
-    public int curRegion;
-
-    public List<RegionData> Regions = new List<RegionData>();
+    public RegionData curRegion;
 
     public GameObject playerCharacter;
 	
@@ -49,6 +38,9 @@ public class Gmanager : MonoBehaviour {
     public gameStates gamestate;
 
     public int numEnemies;
+    //spawnpoint
+    public string nextspawnpoint;
+
     // Use this for initialization
     void Awake () {
 		
@@ -132,11 +124,11 @@ public class Gmanager : MonoBehaviour {
     void startBattle()
     {
         //amount of enemies that can be encountered
-        numEnemies = Random.Range(1,Regions[curRegion].maxEnemies + 1);
+        numEnemies = Random.Range(1,curRegion.maxEnemies + 1);
         //what enemies are sent into battle
         for (int i =0; i<numEnemies;i++)
         {
-            enemiesToBattle.Add(Regions[curRegion].possibleEnemies[Random.Range(0, Regions[curRegion].possibleEnemies.Count)]);
+            enemiesToBattle.Add(curRegion.possibleEnemies[Random.Range(0, curRegion.possibleEnemies.Count)]);
         }
         //player pos for after battle
         prevPlayerPos = GameObject.Find("playerCharacter").gameObject.transform.position;
@@ -144,7 +136,7 @@ public class Gmanager : MonoBehaviour {
         nextPlayerPos = prevPlayerPos;
         lastScene = SceneManager.GetActiveScene().name;
         //load battle scene
-        SceneManager.LoadScene(Regions[curRegion].battleScene);
+        SceneManager.LoadScene(curRegion.battleScene);
         //reset player character
         isWalking = false;
         gotEncountered = false;

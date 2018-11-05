@@ -381,7 +381,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1467740377256362, guid: 9123e4fa87091d04e922385957c04eba, type: 2}
       propertyPath: m_TagString
-      value: LeaveTown
+      value: enterexit
+      objectReference: {fileID: 0}
+    - target: {fileID: 114322247905673226, guid: 9123e4fa87091d04e922385957c04eba,
+        type: 2}
+      propertyPath: spawnpointName
+      value: mapspawntown1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9123e4fa87091d04e922385957c04eba, type: 2}

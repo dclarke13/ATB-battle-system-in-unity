@@ -92,13 +92,16 @@ public class EnemyStateMachine : MonoBehaviour
                     {
                         for (int i = 0; i < BSM.TurnList.Count; i++)
                         {
-                            if (BSM.TurnList[i].attackerGO == this.gameObject)
+                            if (i != 0)
                             {
-                                BSM.TurnList.Remove(BSM.TurnList[i]);
-                            }
-                            if (BSM.TurnList[i].attackTarget == this.gameObject)
-                            {
-                                BSM.TurnList[i].attackTarget = BSM.EnemyCharacters[Random.Range(0, BSM.EnemyCharacters.Count)];
+                                if (BSM.TurnList[i].attackerGO == this.gameObject)
+                                {
+                                    BSM.TurnList.Remove(BSM.TurnList[i]);
+                                }
+                                if (BSM.TurnList[i].attackTarget == this.gameObject)
+                                {
+                                    BSM.TurnList[i].attackTarget = BSM.EnemyCharacters[Random.Range(0, BSM.EnemyCharacters.Count)];
+                                }
                             }
                         }
                     }

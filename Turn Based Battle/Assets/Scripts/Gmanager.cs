@@ -13,8 +13,11 @@ public class Gmanager : MonoBehaviour {
     {
         public string regionname;
         public int maxEnemies = 4;
+        public string battleScene;
         public List<GameObject> possibleEnemies = new List<GameObject>();
     }
+
+    public int curRegion;
 
     public List<RegionData> Regions = new List<RegionData>();
 
@@ -42,8 +45,10 @@ public class Gmanager : MonoBehaviour {
         BATTLE_STATE,
         IDLE
     }
+    public List<GameObject> enemiesToBattle = new List<GameObject>();
     public gameStates gamestate;
 
+    public int numEnemies;
     // Use this for initialization
     void Awake () {
 		
@@ -88,7 +93,8 @@ public class Gmanager : MonoBehaviour {
                 break;
             case (gameStates.BATTLE_STATE):
                 //load battle scene
-                
+                startBattle();
+                gamestate = gameStates.IDLE;
                 //go to idle
                 break;
             case (gameStates.IDLE):
@@ -102,6 +108,11 @@ public class Gmanager : MonoBehaviour {
 
         SceneManager.LoadScene(sceneToLoad);
 
+    }
+
+    public void LoadAfterBattle()
+    {
+        SceneManager.LoadScene(lastScene);
     }
 	
     void RandomEncounter()
@@ -120,8 +131,23 @@ public class Gmanager : MonoBehaviour {
 
     void startBattle()
     {
-
-
-
+        //amount of enemies that can be encountered
+        numEnemies = Random.Range(1,Regions[curRegion].maxEnemies + 1);
+        //what enemies are sent into battle
+        for (int i =0; i<numEnemies;i++)
+        {
+            enemiesToBattle.Add(Regions[curRegion].possibleEnemies[Random.Range(0, Regions[curRegion].possibleEnemies.Count)]);
+        }
+        //player pos for after battle
+        prevPlayerPos = GameObject.Find("playerCharacter").gameObject.transform.position;
+        //scene player was in
+        nextPlayerPos = prevPlayerPos;
+        lastScene = SceneManager.GetActiveScene().name;
+        //load battle scene
+        SceneManager.LoadScene(Regions[curRegion].battleScene);
+        //reset player character
+        isWalking = false;
+        gotEncountered = false;
+        canEncounterEnemy = false;
     }
 }

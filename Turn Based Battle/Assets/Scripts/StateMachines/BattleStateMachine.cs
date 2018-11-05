@@ -58,9 +58,24 @@ public class BattleStateMachine : MonoBehaviour {
     public GameObject skillsButton;
     private List<GameObject> attackButtons = new List<GameObject>();
 
-    //
+    //list of enemy buttons
     private List<GameObject> targetBtns = new List<GameObject>();
 
+    //spawn points for enemies
+    public List<Transform> spawnPoints = new List<Transform>();
+
+    void Awake()
+    {
+        
+        for(int i =0; i < Gmanager.instance.numEnemies;i++)
+        {
+            GameObject NewEnemy = Instantiate(Gmanager.instance.enemiesToBattle[i],spawnPoints[i].position, Quaternion.identity) as GameObject;
+            NewEnemy.name = NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName + "_" + (i+1);
+            NewEnemy.GetComponent<EnemyStateMachine>().enemy.theName = NewEnemy.name;
+            EnemyCharacters.Add(NewEnemy);
+        }
+
+    }
 
     // Use this for initialization
     void Start ()
@@ -69,7 +84,7 @@ public class BattleStateMachine : MonoBehaviour {
         //add players to list at start of battle
         PlayerCharacters.AddRange(GameObject.FindGameObjectsWithTag("Player"));
        //add enemies to list at start of battle
-        EnemyCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
+       // EnemyCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         playerInput = PlayerGUI.ACTIVATE;
 
         //set panels to inactive
@@ -158,7 +173,11 @@ public class BattleStateMachine : MonoBehaviour {
                 {
                     PlayerCharacters[i].GetComponent<PlayerStateMachine>().currentState = PlayerStateMachine.TurnState.WAITING;
                 }
-               // SceneManager.LoadScene("win");
+                //return player ot previous scene
+                Gmanager.instance.LoadAfterBattle();
+                // SceneManager.LoadScene("win");
+                Gmanager.instance.gamestate = Gmanager.gameStates.WORLD_STATE;
+                Gmanager.instance.enemiesToBattle.Clear();
                 break;
 
             case (PerformAction.LOSE):

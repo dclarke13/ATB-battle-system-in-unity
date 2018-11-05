@@ -51,5 +51,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d9c4359040f7d42acc41547bcdf70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curRegion: 0
+  Regions:
+  - regionname: dangerzoneforest
+    maxEnemies: 4
+    battleScene: battletest
+    possibleEnemies:
+    - {fileID: 1188882688011936, guid: 098cba9f7c2878d4c914a9c9918d8dcf, type: 2}
+  - regionname: dangerzonefield
+    maxEnemies: 4
+    battleScene: battletest
+    possibleEnemies:
+    - {fileID: 1188882688011936, guid: 098cba9f7c2878d4c914a9c9918d8dcf, type: 2}
+    - {fileID: 1990003129894444, guid: d4aa74945a4542a488d3d45a067919f8, type: 2}
   playerCharacter: {fileID: 1175383159896812, guid: 80ba9d6e121c63e4a83d182d2806ab98,
     type: 2}
+  nextPlayerPos: {x: 0, y: 0, z: 0}
+  prevPlayerPos: {x: 0, y: 0, z: 0}
+  sceneToLoad: 
+  lastScene: 
+  isWalking: 0
+  canEncounterEnemy: 0
+  gotEncountered: 0
+  enemiesToBattle: []
+  gamestate: 0
+  numEnemies: 0

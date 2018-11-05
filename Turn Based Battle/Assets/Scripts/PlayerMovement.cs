@@ -56,6 +56,14 @@ public class PlayerMovement : MonoBehaviour {
             Gmanager.instance.sceneToLoad = col.sceneToLoad;
             Gmanager.instance.LoadNewScene();
         }
+        if(other.tag == "dangerzonefield")
+        {
+            Gmanager.instance.curRegion = 0;
+        }
+        if (other.tag == "dangerzoneforest")
+        {
+            Gmanager.instance.curRegion = 1;
+        }
     }
 
     private void OnTriggerStay(Collider other)
